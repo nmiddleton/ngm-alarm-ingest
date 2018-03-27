@@ -18,6 +18,7 @@ tags:
       url: 'https://thehub.thomsonreuters.com/docs/DOC-851597'
 schemes:
   - http
+  - https
 paths:
   /ngm-alarm-ingest:
     post:
@@ -47,7 +48,7 @@ paths:
 securityDefinitions:
   api_key:
     type: apiKey
-    name: x-api-key
+    name: ocp-apim-subscription-key
     in: header
 definitions:
   Alarm:
@@ -81,17 +82,21 @@ definitions:
         enum:
           - host
           - application
+      occurred_at:
+        type: string
+        description: The ISO Timestamp of when this occurred (pref to millisec)
+        enum:
+          - host
+          - application
     example:
-      reporter: sensu
-      end_point_id: c844ctsbmnpp1
+      reporter: azure
+      end_point_id: some_host_or_application_id
       alarm_type: host
-      status: CRITICAL
-      category: azure_aws_2
-      message: Ignore this alarm azure_aws_2
-      informer: c844ctsbmnpp1
-      occurred_at: '2018-03-20T14:00:45Z'
-      context:
-        environment: Pre-Production
+      status: '[ CRITICAL| WARNING | OK]'
+      category: the_type_of_alarm
+      message: Ignore this test from Azure
+      informer: some_host_or_application_id
+      occurred_at: '2018-03-23T14:00:45:123Z'
 externalDocs:
   description: Find out more about CAM
   url: >-
