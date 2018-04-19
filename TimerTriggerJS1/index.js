@@ -1,5 +1,5 @@
 const rp = require('request-promise');
-function fred (context, myTimer) {
+module.exports = function (context, myTimer) {
     var timeStamp = new Date().toISOString();
 
     if(myTimer.isPastDue)
@@ -22,7 +22,5 @@ function fred (context, myTimer) {
     context.log('JavaScript timer trigger function ran!:', timeStamp);
 
 
-    // context.done();
+    context.done();
 };
-
-fred(console, {isPastDue: false});
