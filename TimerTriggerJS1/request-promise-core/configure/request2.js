@@ -1,6 +1,6 @@
 'use strict';
 
-var core = require('../'),
+var core = require('../lib/plumbing'),
     isArray = require('lodash/isArray'),
     isFunction = require('lodash/isFunction'),
     isObjectLike = require('lodash/isObjectLike');
